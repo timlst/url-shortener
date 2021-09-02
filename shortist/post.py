@@ -3,6 +3,7 @@ from flask import (
 )
 
 import urllib
+import re
 
 from shortist.auth import login_required
 from shortist.db import get_db
@@ -22,6 +23,8 @@ def index(destination_value=""):
             error = 'URL destination is required.'
         elif not shortened_url:
             error = 'Shortened URL is required.'
+        elif not re.match(r"^[a-zA-Z0-9-_]+$", shortened_url):
+            error = 'Shortened URL may only contain [a-zA-Z0-9-_]'
 
         if error is None:
             try:

@@ -11,8 +11,8 @@
     </div>
     <div class="row">
         <label for="shortened">Shortened URL</label> 
-        Must not contain hashtags or ampersands.
-        <input class="u-full-width" type="text" name="shortened" id=shortened placeholder="myperfecturl" autocomplete="off" pattern="[^\&\#]" required>
+        Must consist of [a-zA-Z0-9-_]
+        <input class="u-full-width" type="text" name="shortened" id=shortened placeholder="myperfecturl" autocomplete="off" pattern="[a-zA-Z0-9-_]+" required>
     </div>
     <div class="row">
         <input class="button-primary primary-action" type="submit" value="Shorten">
