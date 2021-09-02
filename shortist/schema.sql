@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS url;
 DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS urls;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -7,12 +7,11 @@ CREATE TABLE user (
   password TEXT NOT NULL
 );
 
-CREATE TABLE url (
+CREATE TABLE urls (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    author_id INTEGER NOT NULL,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    title TEXT NOT NULL,
     shortened_url TEXT UNIQUE NOT NULL,
-    full_url TEXT NOT NULL,
-    FOREIGN KEY (author_id) REFERENCES user (id)
+    full_url TEXT NOT NULL
 );
+
+INSERT INTO urls (shortened_url, full_url) VALUES ("aBcD", "https://example.com/");

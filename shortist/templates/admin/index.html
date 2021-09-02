@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Shortened Links{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if links %}
+    <table class="u-full-width">
+        <thead>
+            <tr>
+                <th>Shortened</th>
+                <th>Full URL</th>
+                <th>Created</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in links %}
+            <tr>
+                <td>{{ link['shortened_url'] }}</td>
+                <td><a href="{{ link['full_url'] }}">{{ link['full_url'] }}</a></td>
+                <td>{{ link['created'].strftime('%Y-%m-%d') }}</td>
+                <td><a class="action" href="{{ url_for('admin.delete', id=link['id']) }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <i>No links shortened so far</i>
+    {% endif %}
+{% endblock %}
