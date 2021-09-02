@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
+  {% block title %}Log In{% endblock %}
 {% endblock %}
 
 {% block content %}
-  <form method="post">
+  <form class="center-form" method="post">
     <div class="row">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" required>
+        <input class="u-full-width" type="text" name="username" id="username" required>
     </div>
     <div class="row">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
+        <input class="u-full-width" type="password" name="password" id="password" required>
     </div>
     <div class="row">
-        <input class="button-primary" type="submit" value="Log In">
+        <input class="button-primary primary-action" type="submit" value="Log In">
     </div>
   </form>
 {% endblock %}

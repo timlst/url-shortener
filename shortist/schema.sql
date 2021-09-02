@@ -13,5 +13,3 @@ CREATE TABLE urls (
     shortened_url TEXT UNIQUE NOT NULL,
     full_url TEXT NOT NULL
 );
-
-INSERT INTO urls (shortened_url, full_url) VALUES ("aBcD", "https://example.com/");

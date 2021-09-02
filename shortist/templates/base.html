@@ -6,28 +6,23 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
 </head>
 <body>
-<div class="container">
-  <div class="row">
-    <h1><a href="{{ url_for('post.index') }}" style="text-decoration: none">Tim's URL Shortener</a></h1>
-    {% if g.user %}
-    <ul>
-      <li>Logged in as <b>{{ g.user['username'] }}</b>
-      <li><a href="{{ url_for('post.index') }}">Shorten Links</a></li>
-      <li><a href="{{ url_for('admin.overview') }}">Admin Page</a></li>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    </ul>
-    {% endif %}
+  <h1 class="logo"><a class="logo-link" href="{{ url_for('post.index') }}">Tim's URL Shortener</a></h1>
+  {% if g.user %}
+  <div class="navbar jc-center">
+      Logged in as   <b>{{ g.user['username'] }}</b>
+      &emsp;
+      <a href="{{ url_for('post.index') }}">Shorten Links</a>
+      &emsp;
+      <a href="{{ url_for('admin.overview') }}">Admin Panel</a>
+      &emsp;
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="six columns offset-by-three">
-      <h1 class="title">{% block header %}{% endblock %}</h1>
-      {% for message in get_flashed_messages() %}
-      <div class="flash">{{ message }}</div>
-      {% endfor %}
-      {% block content %}{% endblock %}
-    </div>
-  </div>
-</div>
+  {% endif %}
+  
+  <h1 class="title">{% block header %}{% endblock %}</h1>
+  {% for message in get_flashed_messages() %}
+  <div class="flash title">{{ message }}</div>
+  {% endfor %}
+
+  {% block content %}{% endblock %}
 </body>

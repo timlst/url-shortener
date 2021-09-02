@@ -1,4 +1,53 @@
-.header {
-    margin-top: 6rem;
+body {
+    background-color: #252c33;
+}
+
+.logo {
+    text-align: center;
+}
+.logo:hover {
+    filter: saturate(80%);
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+.title {
     text-align: center; 
+}
+
+.center-form {
+    width: 33%;
+    margin: 0 auto;
+}
+
+.primary-action {
+    width: 20%;
+    float: right;
+}
+
+.table {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.success-link {
+    text-align: center;
+}
+
+.flex-parent {
+    display: flex;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+button.margin-right {
+    margin-right: 1%;
+}
+
+.navbar {
+    text-align: center;
 }

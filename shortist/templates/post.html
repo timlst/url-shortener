@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% block header %}
-<h1>{% block title %}Shorten a link{% endblock %}</h1>
+    {% block title %}Shorten a link{% endblock %}
 {% endblock %}
 
 {% block content %}
-<form method="post">
+<form class="center-form" method="post">
     <div class="row">
         <label for="destination">Destination</label>
-        <input type="text" name="destination" id=destination value="{{ destination_value }}" placeholder="https://example.com/" autocomplete="off" required>
+        <input class="u-full-width" type="text" name="destination" id=destination value="{{ destination_value }}" placeholder="https://example.com/" autocomplete="off" required>
     </div>
     <div class="row">
         <label for="shortened">Shortened URL</label>
-        <input type="text" name="shortened" id=shortened placeholder="myperfecturl" autocomplete="off" required>
+        <input class="u-full-width" type="text" name="shortened" id=shortened placeholder="myperfecturl" autocomplete="off" required>
     </div>
     <div class="row">
-        <input class="button-primary" type="submit" value="Shorten">
+        <input class="button-primary primary-action" type="submit" value="Shorten">
     </div>
 </form>
 {% endblock %}

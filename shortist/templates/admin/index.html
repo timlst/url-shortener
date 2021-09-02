@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Shortened Links{% endblock %}</h1>
+    {% block title %}Shortened Links{% endblock %}
 {% endblock %}
 
 {% block content %}
     {% if links %}
-    <table class="u-full-width">
+    <table class="table">
         <thead>
             <tr>
                 <th>Shortened</th>
