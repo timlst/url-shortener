@@ -7,9 +7,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from .db import get_db
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+bp = Blueprint('auth', __name__)
 
-@bp.route('/register', methods=('GET', 'POST'))
+# @bp.route('/register', methods=('GET', 'POST'))
 def register():
     """Present Registration form to the user and try inserting them into the local databse upon POST request"""
     if request.method == 'POST':
