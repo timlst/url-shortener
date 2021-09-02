@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block header %}
+<h1>{% block title %}Shorten a link{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <div class="row">
+        <label for="destination">Destination</label>
+        <input type="text" name="destination" id=destination placeholder="https://example.com/" required>
+    </div>
+    <div class="row">
+        <label for="preference">Preferred URL</label>
+        <input type="text" name="preference" id=preference placeholder="myperfecturl">
+    </div>
+    <div class="row">
+        <input class="button-primary" type="submit" value="Shorten">
+    </div>
+</form>
+{% endblock %}
