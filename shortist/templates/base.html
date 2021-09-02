@@ -1,8 +1,11 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Shortist</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
-
+<head>
+  <title>{% block title %}{% endblock %} - Shortist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+</head>
+<body>
 <div class="container">
   <div class="row">
     <h1><a href="{{ url_for('post.index') }}" style="text-decoration: none">Tim's URL Shortener</a></h1>
@@ -14,11 +17,16 @@
     </ul>
     {% endif %}
   </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="six columns offset-by-three">
       <h1 class="title">{% block header %}{% endblock %}</h1>
-    
       {% for message in get_flashed_messages() %}
       <div class="flash">{{ message }}</div>
       {% endfor %}
       {% block content %}{% endblock %}
-
+    </div>
+  </div>
 </div>
+</body>
