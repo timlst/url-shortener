@@ -8,6 +8,7 @@
   <ul>
     {% if g.user %}
       <li>Logged in as <b>{{ g.user['username'] }}</b>
+      <li><a href="{{ url_for('admin.overview') }}">Admin page</a></li>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
     {% endif %}
   </ul>

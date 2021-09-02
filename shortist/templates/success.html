@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block header %}
+<h2>{% block title %}Success{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    Your link has been shortened to <a href="{{ url }}">{{ url }}</a>.
+</div>
+<!-- copy link to clipboard -->
+<div class="row">
+    <div class="three column">
+        <button class="button-primary" onclick="navigator.clipboard.writeText('{{ url }}')">Copy link to clipboard</button>
+    </div>
+    <div class="three column">
+        <button class="button-primary" onclick="window.location.href = '{{ url_for('post.index') }}'"> Go again </button>
+    </div>
+</div>
+{% endblock %}
