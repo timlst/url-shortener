@@ -1,10 +1,10 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Shortener</title>
+<title>{% block title %}{% endblock %} - Shortist</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}"> -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
 <nav>
-  <h1>Tim's Shortener</h1>
+  <h1>Tim's URL Shortener</h1>
   <ul>
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>

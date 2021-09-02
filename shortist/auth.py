@@ -11,6 +11,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
+    """Present Registration form to the user and try inserting them into the local databse upon POST request"""
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -30,7 +31,7 @@ def register():
                 )
                 db.commit()
             except db.IntegrityError:
-                error = f"User {username} is already registered."
+                error = f"User {username} already exists."
             else:
                 return redirect(url_for("auth.login"))
 
@@ -40,6 +41,7 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
+    """Checks whether entered credentials are valid. Upon successful login user will be stored in the session."""
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -65,6 +67,7 @@ def login():
 
 @bp.before_app_request
 def load_logged_in_user():
+    """Before every request check if the user is currently logged in and load them into g  if necessary."""
     user_id = session.get('user_id')
 
     if user_id is None:
@@ -77,10 +80,12 @@ def load_logged_in_user():
 
 @bp.route('/logout')
 def logout():
+    """Logs user out and redirects to index."""
     session.clear()
     return redirect(url_for('index'))
 
 def login_required(view):
+    """Decorator for any routes that are only visible to logged in users."""
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
