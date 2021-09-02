@@ -10,6 +10,6 @@
 <!-- copy link to clipboard -->
 <div class="row">
         <button class="button-primary" onclick="navigator.clipboard.writeText('{{ url }}')">Copy link to clipboard</button>
-        <button class="button-primary" onclick="window.location.href = '{{ url_for('post.index') }}';"> Go again </button>
+        <button class="button-primary" onclick="window.location.href = '{{ url_for("post.index") }} '"> Go again </button>
 </div>
 {% endblock %}

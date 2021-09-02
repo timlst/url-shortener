@@ -56,5 +56,13 @@ def redirect_to_destination(shortened):
 
 @bp.route("/success/<shortened>")
 def success(shortened):
+
+    destination = get_db().execute(
+        'SELECT full_url FROM urls WHERE shortened_url=?', (shortened,)
+    ).fetchone()
+
+    if not destination:
+        return redirect(url_for('post.index'))
+
     shortened_url_absolute = request.url_root + shortened
     return render_template('success.html', url=shortened_url_absolute, back=request.url_root)
