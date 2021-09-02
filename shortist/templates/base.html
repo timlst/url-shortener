@@ -1,26 +1,24 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Shortist</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}"> -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
-<nav>
-  <h1>Tim's URL Shortener</h1>
-  <ul>
+
+<div class="container">
+  <div class="row">
+    <h1><a href="{{ url_for('post.index') }}" style="text-decoration: none">Tim's URL Shortener</a></h1>
     {% if g.user %}
+    <ul>
       <li>Logged in as <b>{{ g.user['username'] }}</b>
       <li><a href="{{ url_for('admin.overview') }}">Admin page</a></li>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    </ul>
     {% endif %}
-  </ul>
-</nav>
-<section class="content">
-<div class="container">
-<header>
-    {% block header %}{% endblock %}
-</header>
-{% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-{% endfor %}
-{% block content %}{% endblock %}
+  </div>
+      <h1 class="title">{% block header %}{% endblock %}</h1>
+    
+      {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+
 </div>
-</section>
