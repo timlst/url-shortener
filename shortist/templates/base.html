@@ -12,7 +12,8 @@
     {% if g.user %}
     <ul>
       <li>Logged in as <b>{{ g.user['username'] }}</b>
-      <li><a href="{{ url_for('admin.overview') }}">Admin page</a></li>
+      <li><a href="{{ url_for('post.index') }}">Shorten Links</a></li>
+      <li><a href="{{ url_for('admin.overview') }}">Admin Page</a></li>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
     </ul>
     {% endif %}

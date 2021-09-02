@@ -3,6 +3,7 @@ import sqlite3
 import click
 from flask import current_app, g
 from flask.cli import with_appcontext
+from werkzeug.security import generate_password_hash
 
 def get_db():
     if 'db' not in g:
@@ -32,6 +33,23 @@ def init_db_command():
     init_db()
     click.echo('Initialized the database.')
 
+@click.command('register-user')
+@click.argument("username")
+@click.argument("password")
+@with_appcontext
+def register_user(username, password):
+    db = get_db()
+    try:
+        db.execute(
+            'INSERT INTO user (username, password) VALUES (?, ?)', (username, generate_password_hash(password))
+        )
+        db.commit()
+    except db.IntegrityError:
+        click.echo(f"User {username} already exists.", err=True)
+    else:
+        click.echo(f"User {username} added to database.")
+
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
+    app.cli.add_command(register_user)
