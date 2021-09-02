@@ -1,0 +1,4 @@
+include shortist/schema.sql
+graft shortist/static
+graft shortist/templates
+global-exclude *.pyc
