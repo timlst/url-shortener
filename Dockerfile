@@ -7,4 +7,6 @@ COPY . /opt/app
 
 COPY shortist/ .
 
+CMD ["flask", "init-db"]
+CMD ["flask", "register-user", "username", "password"]
 CMD ["waitress-serve", "--call", "shortist:create_app"]
