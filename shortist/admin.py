@@ -6,7 +6,7 @@ from shortist.auth import login_required
 from shortist.db import get_db
 
 """
-The admin page that allows viewing all registered links.
+The admin panel that allows viewing all registered links.
 """
 
 bp = Blueprint('admin', __name__, url_prefix='/admin')

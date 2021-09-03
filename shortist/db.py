@@ -46,10 +46,42 @@ def register_user(username, password):
         db.commit()
     except db.IntegrityError:
         click.echo(f"User {username} already exists.", err=True)
+    except db.Error as e:
+        click.echo(f"Could not register user: {e}")
     else:
         click.echo(f"User {username} added to database.")
+
+@click.command("clear-users")
+@with_appcontext
+def clear_users():
+    db = get_db()
+    try:
+        db.execute(
+            'DELETE FROM user;'
+        )
+        db.commit()
+    except db.Error as e:
+        click.echo(f"Could not clear users: {e}")
+    else:
+        click.echo(f"Users database has been cleared.")
+
+@click.command("clear-urls")
+@with_appcontext
+def clear_urls():
+    db = get_db()
+    try:
+        db.execute(
+            'DELETE FROM urls;'
+        )
+        db.commit()
+    except db.Error as e:
+        click.echo(f"Could not clear urls: {e}")
+    else:
+        click.echo(f"URLs database has been cleared.")
 
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
     app.cli.add_command(register_user)
+    app.cli.add_command(clear_users)
+    app.cli.add_command(clear_urls)
